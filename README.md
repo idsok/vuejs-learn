@@ -1,1 +1,2 @@
-# vuejs-learn
+# Apprentisage de vue.js
+Autoformation sur vue.js
