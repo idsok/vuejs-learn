@@ -19,6 +19,27 @@
             difficile de s'arrêter.
         </p>
 
+        <section class="menu">
+            <h2>Menu</h2>
+            <div v-for="menuItem in simpleMenu" :key="menuItem.name" class="menu-item">
+                <img class="menu-item__image" :src="menuItem.image.source" :alt="menuItem.image.alt" />
+                <div>
+                    <h3>{{ menuItem.name }}</h3>
+                    <p v-if="menuItem.inStock">En stock</p>
+                    <p v-else>En rupture de stock</p>
+                    <div>
+                        <label for="add-item-quantity">Quantité : {{ menuItem.quantity }}</label>
+                        <input id="add-item-quantity" type="number" v-model.number="menuItem.quantity" />
+                        <button @click="addToShoppingCart(menuItem.quantity)">Ajouter au panier d'achat</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <aside class="shopping-cart">
+            <h2>Panier d'achat: {{ totalPanier }} articles</h2>
+        </aside>
+
         <h2>Contactez nous</h2>
         <p>Adresse : {{ address }}</p>
         <p>Téléphone : {{ phone }}</p>
@@ -42,12 +63,47 @@
                 restaurantName: 'Café avec vue',
                 phone: '01 88 88 88 88',
                 email: 'hello@cafewithavue.bakery',
-                address: '18 avenue du Beurre, Paris, France'
+                address: '18 avenue du Beurre, Paris, France',
+                totalPanier: 0,
+                simpleMenu: [
+                    {
+                        name: "Croissant",
+                        image: {
+                            source: "./images/croissant.jpg",
+                            alt: "Un croissant"
+                        },
+                        inStock: true,
+                        quantity: 0
+                    },
+                    {
+                        name: "Baguette de pain",
+                        image: {
+                            source: "./images/french-baguette.jpeg",
+                            alt: "Quatre baguettes de pain"
+                        },
+                        inStock: true,
+                        quantity: 0
+                    },
+                    {
+                        name: "Éclair",
+                        image: {
+                            source: "./images/eclair.jpg",
+                            alt: "Éclair au chocolat"
+                        },
+                        inStock: false,
+                        quantity: 0
+                    }
+                ]
             },
             computed: {
-                copyright: function() {
+                copyright: function () {
                     const currentYear = new Date().getFullYear();
                     return `Copyright ${this.restaurantName} ${currentYear}`;
+                }
+            },
+            methods: {
+                addToShoppingCart: function (quantity) {
+                    this.totalPanier += quantity;
                 }
             }
         })
