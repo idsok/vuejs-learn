@@ -7,5 +7,5 @@ Auto-formation sur vue.js. Suivi complet du cours qui m'a permis d'apprendre à 
 * gérer les données d'une application.
 
 ### Liens de la formation
-Voir [Reference de la formation](https://openclassrooms.com/fr/courses/6390311-creez-une-application-web-avec-vue-js)
-Voir [Reference de la documentation officiel](https://fr.vuejs.org/)
+* [Reference de la formation](https://openclassrooms.com/fr/courses/6390311-creez-une-application-web-avec-vue-js)
+* [Reference de la documentation officiel](https://fr.vuejs.org/)
